@@ -49,7 +49,7 @@ def luck_simple(num):
         return '凶'
     
 
-jrrp = on_command("jrrp",rule=to_me(), aliases={"JRRP", "今日人品"}, priority=49)
+jrrp = on_command("jrrp",rule=to_me(), aliases={"JRRP", "今日人品"}, priority=49, block=True)
 
 @jrrp.handle()
 async def jrrp_handle(bot: Bot, event: Event):

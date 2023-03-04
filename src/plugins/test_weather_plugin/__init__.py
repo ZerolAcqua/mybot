@@ -18,7 +18,7 @@ __plugin_meta__ = PluginMetadata(
 )
 
 
-weather = on_command("weather", rule=to_me(), aliases={"天气", "天气预报"}, priority=5)
+weather = on_command("weather", rule=to_me(), aliases={"天气", "天气预报"}, priority=5, block=True)
 
 
 

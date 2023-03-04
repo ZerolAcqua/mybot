@@ -21,7 +21,7 @@ from .utils import (
     get_reverse_id_message
 )
 
-derpy = on_command("呆站", rule=to_me(), aliases={"dp","derpy", "derpibooru"}, priority=30)
+derpy = on_command("呆站", rule=to_me(), aliases={"dp","derpy", "derpibooru"}, priority=30,  block=True)
 
 # @derpy.handle()
 async def perssion_test(bot: Bot, event: GroupMessageEvent):
@@ -50,7 +50,7 @@ async def derpy_id(ID: Message = Arg(), ID_str: str = ArgPlainText("ID")):
     await derpy.finish(derpy_image_message_seg)
 
 
-trend = on_command("呆站热门", rule=to_me(), aliases={"dptrending", "dptrd"}, priority=30)
+trend = on_command("呆站热门", rule=to_me(), aliases={"dptrending", "dptrd"}, priority=30, block=True)
 
 @trend.handle()
 async def trend_handle(bot: Bot, event: Event):
@@ -58,7 +58,7 @@ async def trend_handle(bot: Bot, event: Event):
     await trend.finish(rand_trend_message_seg)
 
 
-reverse = on_command("呆站反搜", rule=to_me(), aliases={"dpreverse", "dprev"}, priority=30)
+reverse = on_command("呆站反搜", rule=to_me(), aliases={"dpreverse", "dprev"}, priority=30, block=True)
 
 @reverse.handle()
 async def reverse_first_receive(matcher: Matcher, image_msg: Message = CommandArg()):
@@ -75,16 +75,4 @@ async def reverse_image(image_msg: Message = Arg("image")):
         message = await get_reverse_id_message(img_url,distance=0.2)
         await reverse.finish(message)
     else:
-        await reverse.finish(Message("摆烂了！"))
-
-
-
-
-
-# @reverse.handle()
-# async def reverse_handle(bot: Bot, event: Event):
-#     print("1")
-#     print(event.get_message())
-#     print("2")
-#     rand_trend_message_seg = await pick_rand_trend_message_seg()
-#     await trend.finish(Message(rand_trend_message_seg))
+        await reverse.finish(Message("哼，摆烂了！"))
